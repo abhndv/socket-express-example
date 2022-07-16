@@ -8,8 +8,8 @@ socket.on("connect", () => {
 
 socket.on("random", (num) => {
   var data = chart.config.data;
-  data.labels.push(chartData.length);
   chartData.push(num);
+  data.labels.push(chartData.length);
   if (chart) chart.update();
   $("#numberList").prepend(num + " ");
 });
@@ -58,7 +58,7 @@ $(() => {
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          beginAtZero: false,
         },
       },
     },

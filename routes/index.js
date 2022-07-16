@@ -20,6 +20,8 @@ let users = {};
 const socketEmit = (io, socketId, action, min, max) => {
   if (action) {
     if (!(min && max)) return;
+    let num = Math.floor(Math.random() * (max - min + 1)) + min;
+    io.to(socketId).emit("random", num);
     users[socketId] = setInterval(function () {
       let num = Math.floor(Math.random() * (max - min + 1)) + min;
       io.to(socketId).emit("random", num);
